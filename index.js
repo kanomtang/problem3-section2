@@ -20,13 +20,16 @@ async function scrape(fundName) {
   });
   
   for (let index = 0; index < fundCollection.length; index++) {
+      // Looking given Fund Name
       if (fundName === fundCollection[index][0]) {
         // Print Nav of given fund  
         console.log(fundCollection[index][1])
         break;
       }
   }
-      // Looking given Fund Name
+
+   // Logout
+   await (await page.waitForSelector("body > input[type=button]")).click()
    browser.close()
 }
 const fundName = process.argv.slice(2,3);
